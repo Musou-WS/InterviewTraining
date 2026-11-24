@@ -69,3 +69,5 @@ def test_insufficient_funds_keeps_balances(tmp_path, monkeypatch):
             assert row[i]["balance"] == 97500
         elif row[i]["id"] == 2:
             assert row[i]["balance"] == 51800
+
+# test directly push to main
