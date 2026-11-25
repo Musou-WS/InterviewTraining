@@ -70,4 +70,16 @@ def test_insufficient_funds_keeps_balances(tmp_path, monkeypatch):
         elif row[i]["id"] == 2:
             assert row[i]["balance"] == 51800
 
+def test_get_account_returns_balance(tmp_path, monkeypatch):
+    # init temp app and temp db
+    db_path, client = initApp(tmp_path, monkeypatch)
+    # check api
+    response = client.get("/accounts/1")
+    assert response.status_code == 200
+    assert response.json()["id"] == 1
+    assert response.json()["balance"] == 97500
+    response = client.get("/accounts/10")
+    assert response.status_code == 404
+    assert response.json()["detail"] == "User Not Found"
+
 # test directly push to main
