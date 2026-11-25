@@ -108,7 +108,7 @@ def get_account(account_id: int):
             status_code = 404,
             detail = "User Not Found"
         )
-    return {"id": result[0], "balance": result[1]}
+    return {"id": result[0], "balance": result[2]}
 
 @app.post("/transfers")
 def transfer(request: TransferRequest):
